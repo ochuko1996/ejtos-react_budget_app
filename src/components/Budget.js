@@ -14,7 +14,7 @@ const Budget = () => {
             alert("budget can't exceed 20,000")
             return;
         }
-        if (budget <= totalExpenses) {
+        if (budget < totalExpenses) {
             alert("you cannot reduce the budget lower than the spending")
             return;
             
