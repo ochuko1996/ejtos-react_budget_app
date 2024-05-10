@@ -1,38 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
-const currencyList = [
-    {
-        id: 1,
-        currency: '$ Dollar',
-        symbol: '$',
-        value: 'Dollar'
-    },
-    {
-        id: 2,
-        currency: '£ Pound',
-        symbol: '£',
-        value: 'Pound'
-    },
-    {
-        id: 3,
-        currency: '€ Euro',
-        symbol: '€',
-        value: 'Euro'
-    },
-    {
-        id: 4,
-        currency: '₹ Ruppee',
-        symbol: '₹',
-        value: 'Ruppe'
-    },
-]
+
 const AllocationForm = (props) => {
     const { dispatch,remaining, currency  } = useContext(AppContext);
 
     const [name, setName] = useState('');
     const [cost, setCost] = useState('');
     const [action, setAction] = useState('');
-    const [currency, setCurrency] = useState(currency)
+    
 
     const submitEvent = () => {
 
@@ -65,7 +40,7 @@ const AllocationForm = (props) => {
 
             <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
                     <div className="input-group-prepend">
-                <label className="input-group-text" htmlFor="inputGroupSelect01">Department</label>
+                <label className="input-group-text" htmlFor="inputGroupSelect01">Department &nbsp;</label>
                   </div>
                   <select className="custom-select" id="inputGroupSelect01" onChange={(event) => setName(event.target.value)}>
                         <option defaultValue>Choose...</option>
@@ -78,28 +53,31 @@ const AllocationForm = (props) => {
                   </select>
 
                     <div className="input-group-prepend" style={{ marginLeft: '2rem' }}>
-                <label className="input-group-text" htmlFor="inputGroupSelect02">Allocation</label>
                   </div>
+                <label className="input-group-text"  htmlFor="inputGroupSelect02">Allocation &nbsp; 
                   <select className="custom-select" id="inputGroupSelect02" onChange={(event) => setAction(event.target.value)}>
                         <option defaultValue value="Add" name="Add">Add</option>
                         <option value="Reduce" name="Reduce">Reduce</option>
                   </select>
+                </label>
                   
-                  <select className="custom-select" id="inputGroupSelect02" onChange={(event) => setAction(event.target.value)}>
-                        {/* <option defaultValue value="Add" name="Add">Add</option> */}
-                        {
-                            currencyList.map(currency  => (
-                                <option value={currency.value} name={currency.value}>{currency.currency}</option>
-                            ))
-                        }
-                  </select>
+                    <div className="input-group-prepend" style={{ marginLeft: '2rem' }}>
+                  </div>
+             
+                    <div className="input-group-prepend" style={{ marginLeft: '2rem' }}>
+                  </div>
+                  <span 
+                  style={{margin: "0.5rem 1rem 0 0"}}
+                  >
+                    {currency}
+                  </span>
 
                     <input
                         required='required'
                         type='number'
                         id='cost'
                         value={cost}
-                        style={{ marginLeft: '2rem' , size: 10}}
+                        style={{   size: 10}}
                         onChange={(event) => setCost(event.target.value)}>
                         </input>
 
